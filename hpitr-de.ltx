@@ -1,0 +1,1292 @@
+%%
+%% This is file `hpitr-de.ltx',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% hpitr.dtx  (with options: `doc,manual,de')
+%% Copyright (c) Daniel Richter, Uwe Hentschel 2013-2014
+%% Copyright (c) Tobias Pape, 2014-2019
+%% 
+%% This file was generated from file(s) of hpitr distribution.
+%% ----------------------------------------------------------------------
+%% 
+%% This work may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, version 1.3c of the license.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status "maintained".
+%% 
+%% The Current Maintainer and author of this work is Tobias Pape.
+%% 
+%% This file may only be distributed together with the file
+%% `hpitr.dtx'. You may however distribute the file `hpitr.dtx'
+%% without this file.
+\ProvidesFile{%
+  hpitr%
+ -de%
+  .ltx%
+}%
+[%
+  2019/11/20 v2.0
+^^J
+  A unified class for Technical Reports at the HPI
+]
+\documentclass[
+ ngerman%
+,trtype=singlearticle
+,contribtools=true
+,intoc=notitle
+,intoc=noauthor
+]{hpitr}
+\usepackage{doc}
+\AtBeginDocument{\MakeShortVerb{\|}}
+\setcounter{StandardModuleDepth}{1}
+\setcounter{IndexColumns}{2}
+\makeatletter
+\renewenvironment{theglossary}
+  {\glossary@prologue%
+  \GlossaryParms \let\item\@idxitem \ignorespaces}
+  {}
+\makeatother
+ % \MacroTopsep=0pt
+ % \MacrocodeTopsep=3pt
+\setlength\MacroIndent{-16pt}
+\renewcommand*\theCodelineNo{%
+  \normalfont\sffamily\color{black!25}\scriptsize%
+  \arabic{CodelineNo}\ }
+\DeclareRobustCommand\cs[1]{\texttt{\textbackslash #1}}
+\providecommand*\marg[1]{\texttt{\{}\meta{#1}\texttt{\}}}
+\providecommand*\oarg[1]{\texttt{[}\meta{#1}\texttt{]}}
+\let\dmsize\scriptsize
+\def\dm#1{{\dmsize\textrm{\textit{\textcolor{DarkBlue}{#1}}}}\xspace}
+
+\providecommand*\MacroFont{\ttfamily\small}
+\providecommand*\AltMacroFont{\ttfamily\itshape\small}
+\providecommand*\EnvName{environment}
+\providecommand*\EnvsName{environments}
+\providecommand*\OptionName{option}
+\providecommand*\OptionsName{options}
+
+\renewcommand*\PrintMacroName[1]{\strut\MacroFont\string #1}
+\renewcommand*\PrintDescribeMacro[1]{\strut \dm{c} \MacroFont \char`\\#1\ }
+ \usepackage{hypdoc}
+\makeatletter
+\renewcommand*\PrintEnvName[1]{\strut \HD@target\MacroFont #1\ }
+\renewcommand*\PrintDescribeEnv[1]{\strut \dm{e} \HD@target\MacroFont #1\ }
+\newcommand*\PrintDescribeOption[1]{\strut \dm{o} \HD@target\MacroFont #1\ }
+\newcommand*\PrintOptionName[1]{\strut \HD@target\MacroFont #1\ }
+\newcommand*\PrintDescribeValue[2]{\strut \dm{v} \HD@target\MacroFont{\scriptsize #1=}#2\ }
+\makeatother
+
+\def\macro{\begingroup
+  \catcode`\\12
+  \MakePrivateLetters \TRDmacro{0}}
+\def\environment{\begingroup
+  \catcode`\\12
+  \MakePrivateLetters \TRDmacro{1}}
+\def\option{\begingroup
+  \catcode`\\12
+  \MakePrivateLetters \TRDmacro{2}}
+
+\makeatletter
+\long\def\TRDmacro#1#2{\endgroup \topsep\MacroTopsep \trivlist
+  \edef\saved@macroname{\string#2}%
+  \ifcase #1
+    \let\saved@indexname\saved@macroname
+  \or
+    \edef\saved@indexname{\expandafter\@gobble\string#2}%
+  \or
+    \let\saved@indexname\saved@macroname
+  \fi
+  \def\makelabel##1{\llap{##1}}%
+  \if@inlabel
+    \let\@tempa\@empty \count@\macro@cnt
+    \loop \ifnum\count@>\z@
+      \edef\@tempa{\@tempa\hbox{\strut}}\advance\count@\m@ne
+    \repeat
+    \edef\makelabel##1{\llap{\vtop to\baselineskip
+        {\@tempa\hbox{##1}\vss}}}%
+    % \def\makelabel##1{\\##1}
+    \advance \macro@cnt \@ne
+  \else \macro@cnt\@ne \fi
+  \edef\@tempa{\noexpand\item[%
+    \ifcase #1
+      \noexpand\PrintMacroName
+    \or
+      \noexpand\PrintEnvName
+    \or
+      \noexpand\PrintOptionName
+    \fi
+    {\string#2}]%
+  }%
+  \@tempa
+  \global\advance\c@CodelineNo\@ne
+  \ifcase #1
+    \SpecialMainIndex{#2}\nobreak
+    \DoNotIndex{#2}%
+  \or
+    \SpecialMainEnvIndex{#2}\nobreak
+  \or
+    \SpecialMainOptionIndex{#2}\nobreak
+  \fi
+  \global\advance\c@CodelineNo\m@ne
+  \ignorespaces}
+\let\endoption\endmacro
+
+\newcommand*{\SpecialMainIndex@Type}[3]{%
+  \@bsphack\special@index{%
+    #1\actualchar
+    {\string\ttfamily\space#1}
+    (\string #2)%
+    \encapchar main}%
+  \special@index{%
+    #3:\levelchar{%
+      \string\ttfamily\space#1}\encapchar
+    main}\@esphack}
+\renewcommand*{\SpecialMainEnvIndex}[1]{%
+  \SpecialMainIndex@Type{#1}{\EnvName}{\EnvsName}}
+\newcommand*{\SpecialMainOptionIndex}[1]{%
+  \SpecialMainIndex@Type{#1}{\OptionName}{\OptionsName}}
+
+\newcommand*{\SpecialIndex@Type}[3]{%
+  \@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+  \index{#1\actualchar{\protect\ttfamily#1}
+    (#2)\encapchar usage}%
+  \index{#3:\levelchar{\protect\ttfamily#1}\encapchar
+    usage}\endgroup\@esphack}
+\renewcommand{\SpecialEnvIndex}[1]{%
+  \SpecialIndex@Type{#1}{\EnvName}{\EnvsName}}
+\newcommand*{\SpecialOptionIndex}[1]{%
+  \SpecialMainIndex@Type{#1}{\OptionName}{\OptionsName}}
+
+\newbool{TR@indescribe}
+\def\TR@describe@table@begin{%
+  \ifvmode\else\par\fi\small\addvspace{2\baselineskip}%
+  \vspace*{-\baselineskip}%
+  \vspace{\z@ plus \baselineskip}%
+  \noindent%
+  \hspace{-1em}
+  \tabular{|l|}\hline\ignorespaces}
+\def\TR@describe@table@end{%
+  \\%
+  \hline\endtabular\nobreak\par\nobreak%
+  \vspace{1.5\baselineskip}\nobreak\vspace{-\baselineskip}\nobreak%
+  \vspace{0pt minus .5\baselineskip}\nobreak%
+}
+
+\newcommand*\Describe@@[1]{%
+  \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@begin}%
+  \noindent\mbox{#1}%
+  \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@end}}%
+
+\renewcommand*\Describe@Env[1]{\endgroup%
+  \Describe@@{\PrintDescribeEnv{#1}}%
+  \SpecialEnvIndex{#1}\@esphack\ignorespaces}
+
+\newcommand*\DescribeOption{\leavevmode\@bsphack
+    \begingroup\expandafter\MakePrivateLetters\Describe@Option}%
+\newcommand*\Describe@Option[1]{\endgroup%
+  \def\@tempa@de{#1}\futurelet\next\Describe@may@Option}
+\newcommand*\Describe@may@Option{%
+  \ifx\next\bgroup%
+     \expandafter\Describe@two@Option%
+   \else%
+     \expandafter\Describe@one@Option%
+   \fi}%
+\newcommand*\Describe@two@Option[1]{%
+  \Describe@@{\PrintDescribeOption{\@tempa@de =#1}}
+  \SpecialOptionIndex{\@tempa@de}\@esphack\ignorespaces}
+\newcommand*\Describe@one@Option{%
+  \Describe@@{\PrintDescribeOption{\@tempa@de}}%
+  \SpecialOptionIndex{\@tempa@de}\@esphack\ignorespaces}
+
+\renewcommand*\Describe@Macro[1]{\endgroup%
+  \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@begin}%
+  \noindent\mbox{\PrintDescribeMacro{#1}}%
+  \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@end}%
+  \SpecialUsageIndex{#1}\@esphack\ignorespaces}
+
+\def\DescribeValue{\leavevmode\@bsphack\begingroup%
+  \MakePrivateLetters\Describe@Value}
+\def\Describe@Value#1#2{%
+    \endgroup%
+    \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@begin}%
+    \noindent\mbox{\PrintDescribeValue{#1}{#2}}%
+    \ifthenelse{\boolean{TR@indescribe}}{}{\TR@describe@table@end}%
+    \@esphack\ignorespaces}%
+
+\newenvironment{Describe}{%
+  \ifthenelse{\boolean{TR@indescribe}}{\TR@error{Do not nest Describe}}{}%
+  \booltrue{TR@indescribe}%
+  \TR@describe@table@begin%
+}{%
+  \boolfalse{TR@indescribe}%
+  \TR@describe@table@end%
+  \nopagebreak%
+  \ignorespaces%
+}
+\makeatother
+
+\usepackage{relsize}
+\usepackage{hologo}
+\usepackage{array}
+\usepackage[binary-units]{siunitx}
+\DeclareSIUnit[number-unit-product = {}] \pt{pt}
+\DeclareSIUnit[number-unit-product = {}] \pc{pc}
+\let\amsCfrac\cfrac
+\renewcommand*\cfrac[2]{%
+  \ifmmode\amsCfrac{#1}{#2}%
+  \else{\addfontfeature{Fractions=On} #1/#2}%
+  \fi}
+\usepackage{listings}
+\lstdefinelanguage[hpitr]{TeX}[AlLaTeX]{TeX}{%
+  deletetexcs={title,author},
+  morekeywords={abstract},
+  moretexcs={chapter},
+  moretexcs=[2]{title,author,subtitle,keywords,maketitle},
+  moretexcs=[3]{addbibresource,printbibliography},
+}
+\lstset{%
+  basicstyle={\color{darkgray}\small\ttfamily},%
+  language={[hpitr]TeX},%
+  columns=fullflexible,%
+  stringstyle=\color{RosyBrown},%
+  texcsstyle=*{\color{Purple}\mdseries},%
+  texcsstyle=*[2]{\color{Blue1}},%
+  texcsstyle=*[3]{\color{ForestGreen}},%
+  % identifierstyle=\color{Blue1},%
+  commentstyle={\color{FireBrick}},%
+  escapechar=`,%
+}
+\usepackage{threeparttable}
+\DeclareRobustCommand*\File[1]{\texttt{\mbox{#1}}}
+\newcommand*\Class{\File}
+\newcommand*\Package{\File}
+\newcommand*\Option{\File}
+\DeclareRobustCommand*\OptionValue[2]{\File{#1}\texttt{=\mbox{#2}}}
+\DeclareRobustCommand{\ghissue}[1]{%
+\href{https://github.com/hpi-swa-lab/hpitr/issues/#1}{GitHub issue \##1}\xspace}
+\DeclareRobustCommand\LuaTeX{\hologo{LuaTeX}}
+\DeclareRobustCommand\pdfTeX{\hologo{pdfTeX}}
+\DeclareRobustCommand\XeTeX{\hologo{XeTeX}}
+\newcommand\remark[1]{%
+  \unskip\par\vspace{\baselineskip}
+  \noindent\framebox[\linewidth]{%
+    \parbox{\linewidth}{\centering
+    #1%
+  }}%
+  \vspace{\baselineskip}\par%
+}
+
+\AtBeginDocument{\setcounter{tocdepth}{\subsectionnumdepth}}
+\setcontribmaketitle
+
+\hypersetup{
+  linkcolor=MidnightBlue,%
+  citecolor=MidnightBlue,%
+  urlcolor=MidnightBlue,%
+}
+
+\DeclareRobustCommand\cf[1]{cf.\,{#1}}
+\GlossaryPrologue{\section*{Änderungsverlauf}}
+\IndexPrologue{\section*{Index}%
+  \markboth{Index}{Index}
+  Kursive Zahlen bezeichnen die Seite, auf welcher ein Eintrag beschrieben ist;
+  unterstrichene Zahlen bezeichnen die Quelltextzeile seine Definition;
+  nicht-ausgezeichnete Zahlen beziehen sich auf Quelltextzeilen, wo der Eintrag
+  benutzt wird.
+}
+\PageIndex
+\RecordChanges
+\EnableCrossrefs
+\OnlyDescription
+\GetFileInfo{\jobname.ltx}
+\begin{document}
+\title{%
+    Die Klasse \File{hpitr} zur Erstellung technischer Berichte am Hasso-Plattner-Institut
+}
+\author{Tobias Pape}
+\affiliation{%
+\organization{Hasso-Plattner-Institut}
+  \\\email{tobias.pape@hpi.uni-potsdam.de}}
+\date{\fileversion{} \filedate}
+\maketitle
+\begin{abstract}
+
+Diese Klasse dient zur Erstellung von technischen Berichten
+am Hasso-Plattner-Institut, Potsdam, in Zusammenarbeit mit dem
+Universitätsverlag Potsdam. Zur Erhaltung eines einheitlichen
+Erscheinungsbildes bietet diese Klasse Einstellungen zu Makrotypographie (wie
+Papiergröße, allgemeines Layout) und auch zur Detailtypographie (wie
+Schriftwahl).
+
+TODO
+\par Dies ist Version \fileversion{} der Datei \File{\filename}.
+\end{abstract}
+{\smaller \tableofcontents}
+
+ \section{Einführung}
+\label{sec:intro}
+Alle technischen Berichte, die das Hasso"=Plattner"=Institut für
+Digital Engineering (\textsc{hpi}) herausgibt sollen ein einheitliches
+Erscheinungsbild haben. Zu diesem Zweck existiert diese \LaTeX"=Klasse namens
+\File{hpitr}. Sie soll die Arbeit an und mit technischen Berichten des
+\textsc{hpi} vereinfachen und die Einheitlichkeit sicherstellen.
+
+Im diesem Handbuch werden die Möglichkeiten dieser \LaTeX"=Klasse erläutert
+und die notwendigen Einschränkungen erklärt.
+
+ \subsection{Eine Anmerkung zu \LaTeX"=Befehlen}
+\begin{Describe}
+  \DescribeMacro{command}\\
+  \DescribeEnv{environment}\\
+  \DescribeOption{option}\\
+  \DescribeValue{option}{value}
+\end{Describe}
+\begingroup \let\dmsize\large
+  Zur schnellen Hilfe zu bestimmen \LaTeX"=Befehlen dieser Klasse wird die
+  zugehörige Erklärung mit einem Kasten wie oben zusehen markiert. Befehlsarten
+  haben dabei eigene Präfixe: Befehle~\dm{c}, Umgebungen~\dm{e},
+  \mbox{Klassenoptionen~\dm{o}} und Werte für Klassenoptionen~\dm{v}.
+  Das soll die Orientierung im Handbuch erleichtern.
+\endgroup
+
+\subsection{Ein Beispiel}
+Als Starthilfe folg ein minimaler, doch vollständiger Technischer Bericht mit
+\File{hpitr}:
+\begin{lstlisting}
+\documentclass[ngerman,trtype=singlereport]{hpitr}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\begin{document}
+\title{Von der Wichtigkeit der Arbeit und sie zu tun}
+\subtitle{Eine imaginäre Abhandlung}
+\author{Anna Author\and Bert Betatester}
+\keywords{Arbeit, Beispiel, lorem ipsum}
+\maketitle
+
+\begin{abstract}
+  `Diese „Arbeit“...`
+\end{abstract}
+\chapter{Einführung}
+Die Informatik hat~\cite{myref}...
+\chapter{...}
+...
+\printbibliography
+\end{document}
+\end{lstlisting}
+Dieses Beispiel erzeugt einen \File{hpitr}"=Bericht, der
+\begin{itemize}
+\item ein eigentlicher Bericht ist (\lstinline|trtype=singlereport|),
+\item Biblatex mit \hologo{biber} benutzt,
+\item und Metadaten für Titel, Autoren und Schlagwörter
+  bereitstellt.
+\end{itemize}
+
+Zu beachten ist, dass die eigentlich typische Auswahl der Eingabecodierung
+(\lstinline|\usepackage[...]{inputenc}|) im Beispiel nicht vorhanden ist. Dies
+geschieht absichtlich, da alle Dateien eines \File{hpitr}"=Berichts in
+\textsc{utf-8}"=Codierung geschrieben werden sollen. Die Klasse sorgt dann für
+die korrekte Handhabung.
+
+\remark{Alle Dateien eines \File{hpitr}"=Berichts müssen
+  \textsc{utf-8}"=codiert sein.}
+\subsection{\LaTeX"=Läufe}
+Alle \File{hpitr}"=Berichte werden als \textsc{pdf}"=Dateien an den
+Universitätsverlag Potsdam übermittelt. Die Klasse unterstützt daher die drei
+verbreiteten \TeX"=Systeme mit direkter \textsc{pdf}"=Ausgabe:
+\begin{itemize}
+\item \pdfTeX{} (Programmdatei \lstinline[language=bash]|pdflatex|),
+\item \LuaTeX{} (Programmdatei \lstinline[language=bash]|lualatex|) und
+\item \XeTeX{} (Programmdatei \lstinline[language=bash]|xelatex|).
+\end{itemize}
+Für beste Ergebnisse und beste Unicode/\textsc{utf-8}"=Unterstützung wird das
+\LuaTeX"=System empfohlen. Aus gleichen Gründen empfiehlt es sich, Biblatex mit
+dem \hologo{biber}"=System statt einfachem \BibTeX\ zu verwenden.
+
+Ein typischer \LaTeX"=Lauf eines \File{hpitr}"=Berichts sollte so aussehen:
+\begin{lstlisting}[language=bash]
+lualatex report
+biber report
+lualatex report
+lualatex report
+\end{lstlisting}
+Dies sollte die \textsc{pdf}"=Datei mit Bibliographieinformationen
+erzeugen.
+\section{Berichtstruktur}
+
+ \subsection{Berichtarten}
+\begin{Describe}
+  \DescribeOption{trtype}{\meta{type}}
+\end{Describe}
+Die Klasse unterstütz die am HPI üblichen Arten von technischen Berichten.
+Grob sind das drei Varianten.
+
+\begin{Describe}
+  \DescribeValue{trtype}{singlearticle}\\
+  \DescribeValue{trtype}{article}\\
+  {\color{gray} \DescribeOption{singlearticle}}
+\end{Describe}
+\paragraph{Artikelartige Berichte}
+Berichte, die im Kern ähnlich zu Tagungs-, Konferenz- oder
+Zeitschriftenartikeln sind, oder erweiterte Varianten davon sind, haben
+\emph{artikelartigen} Charakter. Ihre höchste Gliederungsebene sind
+\emph{Abschnitte}.
+
+\begin{Describe}
+\DescribeValue{trtype}{singlereport}\\
+\DescribeValue{trtype}{report}\\
+{\color{gray} \DescribeOption{single}}\\
+{\color{gray} \DescribeOption{singlereport}}
+\end{Describe}
+\paragraph{Eigentliche Berichte}
+Berichte, die ähnlich zu Monographien (wie Abschlussarbeiten) oder
+grundsätzlich eigenständig sind, sind im eigentlichen Sinne
+\emph{berichtartig}.\footnote{Das bedeutet nicht, dass die anderen Arten sich
+nicht als technische Berichte eignen würden.} Ihre höchste Gliederungsebene sind
+\emph{Kapitel}.
+
+Wird keine Berichtart explizit ausgewählt, ist diese hier Standard.
+
+\begin{Describe}
+  \DescribeValue{trtype}{collection}\\
+  {\color{gray} \DescribeOption{collection}}\\
+  \DescribeValue{trtype}{proceedings}\\
+  {\color{gray} \DescribeOption{proceedings}}
+\end{Describe}
+\paragraph{Sammlungsartige Berichte}
+Berichte, die sich aus mehreren Einzelbeiträgen zusammensetzen sind
+\emph{sammlungsartig}. Dies kann unter anderem Tagungsbände,
+Seminarzusammenfassungen oder Sonderbände beinhalten. Ihre höchste
+Gliederungsebene sind \emph{Kapitel}. Es gibt einige Befehle die die
+Verwaltung von diesen Sammlungen vereinfachen sollen.
+
+Tagungsbände zeichnen sich durch eine besondere Formatierung der
+Einzelbeiträge aus; jeder Beitrag beginnt im Gegensatz zu normalen Sammlungen
+mit eigenem Titel, Autorennennung und Zusammenfassung. In normalen Sammlungen
+ordnet sich die Abschnittsnummerierung der Kapitelnummerierung unter.%
+
+\begin{Describe}
+\DescribeValue{trtype}{inproceedings}\\
+{\color{gray} \DescribeOption{inproceedings}}
+\end{Describe}
+\paragraph{Beiträge zu tagungsbandartigen Berichten}
+Die \File{hpitr}"=Klasse unterstützt eine uneigentliche Beritchart
+\emph{inproceedings}, die nicht eigenständig veröffentlicht werden soll. Sie
+ist dafür gedacht, um einen einzelnen Beitrag zu einem tagungsbandartigen
+Bericht als \textsc{pdf} zur möglichen Weiterverarbeitung vorzubereiten.
+
+ \subsection{Informationen zum Bericht und Metadaten}
+\label{sec:metadata}
+\begin{Describe}
+\DescribeMacro{title}\\
+\DescribeMacro{subtitle}\\
+\DescribeMacro{author}\\
+\DescribeMacro{keywords}\\
+\DescribeMacro{maketitle}\\
+\DescribeEnv{abstract}
+\end{Describe}
+Für alle technischen Berichte müssen bestimmte Informationen und Metadaten
+bereitgestellt werden; und zwar
+\begin{itemize}
+\item der Titel auf Deutsch und Englisch,
+\item die Namen aller Autoren,
+\item Schlagworte auf Deutsch und Englisch,
+\item Kurzfassungen auf Deutsch und Englisch.
+\end{itemize}
+Diese Informationen müssen \emph{zusätzlich} zur \textsc{pdf}"=Datei
+bereitgestellt werden.
+
+Abgesehen von den Kurzfassungen müssen alle Informationen auch als
+\textsc{pdf}"=Metadaten zur Verfügung stehen. Die \File{hpitr}"=Klasse sorgt
+dafür, solange die typischen \LaTeX"=Befehle dafür genutzt werden:\\
+\cs{title}\marg{Berichttitel}\\
+\cs{subtitle}\marg{optionaler Untertitel}\\
+\cs{author}\marg{Liste der Autorennamen, mit \cs{and} getrennt}\\
+\cs{keywords}\marg{kommagetrennte Schlagworte}\\
+und \cs{maketitle} um diese Informationen ins \textsc{pdf} zu übernehmen.
+
+Im Gegensatz zur üblichen Praxis setzt \cs{maketitle} absichtlich \emph{weder}
+Titelseite \emph{noch} Titelkopf auf der ersten Seite, da die
+\emph{eigentliche} Titelei durch den Universitätsverlag angefügt wird.
+
+Die Berichtskurzfassung, die in der |abstract|"=Umgebung angegeben wird, wird
+jedoch auf jeden Fall mit ausgegeben. Für artikelartige und eigentliche
+Berichte ist dies typischerweise die erste Seite. Sammlungsartige Berichte
+sollten keine Kurzfassung sondern eher ein Vorwort haben.
+
+\begin{Describe}
+ \DescribeMacro{principalInvestigator}\\
+ \DescribeMacro{event}\\
+ \DescribeMacro{affiliation}\\
+ \DescribeMacro{email}\\
+ \DescribeMacro{institute}\\
+ \DescribeMacro{group}\\
+ \DescribeMacro{organization}
+\end{Describe}
+Beiträge in Sammlungsartigen Berichten werden gesondert behandelt.
+
+\begin{Describe}
+  {\color{gray}\DescribeMacro{part}}\\
+  \DescribeMacro{chapter}\\
+  \DescribeMacro{section}\\
+  \DescribeMacro{subsection}\\
+  \DescribeMacro{subsubsection}\\
+  \DescribeMacro{paragraph}\\
+  \DescribeMacro{minisec}
+\end{Describe}
+\subsection{Strukturelemente}
+\label{sec:struct-elelements}
+
+Die in \LaTeX\ üblichen Strukturierungsbefehle sind auch in
+\File{hpitr}"=Berichten mit nur wenigen Einschränkungen nutzbar.
+
+Der \cs{chapter}"=Befehl ist auf eigentliche und sammlungsartige Berichte
+beschränkt. Alle Berichtarten stehen die Befehle \cs{section} bis
+\cs{subsubsection} zur Verfügung, sie markieren nummerierte Dokumentabschnitte.
+Alle diese Befehle existieren in Stern"=Varianten (wie \cs{section*}) um
+nicht-nummerierte Dokumentabschnitte zu markieren.
+
+Der Befehl \cs{paragraph} markiert immer einen nicht-nummerierten
+Dokumentabschnitt, typischerweise einen Absatz. Der Absatztext beginnt sofort
+nach dem Abschnittstitel ohne Leerzeile.
+Nicht-nummerierte ad-hoc"=Abschnitte können mittels \cs{minisec} markiert werden.
+
+Der \cs{part}"=Befehl sollte nur selten zum Einsatz kommen. Eigentliche oder
+tagungsbandartige längere Berichte können jedoch die Unterteilung in Teile
+rechtfertigen.
+
+\cs{subparagraph} sollte nicht benutzt werden.
+
+\subsubsection*{Tagungsbandartige Berichte}
+
+In Tagungsbänden und ähnlichen Berichten sollten Kapitel nur außerhalb der
+eigentlichen, eigenständigen Beiträge Verwendung finden, da jeder Beitrag
+einzeln wie ein artikelartiger Bericht wirkt. Daher sollten \emph{in} den
+Beiträgen nur Abschnitte und ggf. markierte Absätze genutzt werden. Anhang und
+Literaturverzeichnis verhalten sich wie Abschnitte und stehen nicht allein auf
+einer neuen Seite. Kapitel hingegen sollten für allgemeine Dokumentteile wie
+Vorworte, Nachworte oder allgemeine Einführungen genutzt werden.
+
+\begin{Describe}
+  \DescribeMacro{tableofcontents}\\
+  \DescribeMacro{listoffigures}\\
+  \DescribeMacro{listoftables}\\
+  {\color{gray} \DescribeMacro{listoflistings}\unskip\ldots}
+\end{Describe}
+\subsubsection*{Das Inhaltsverzeichnis}
+
+Berichte sollten ein Inhaltsverzeichnis (\cs{tableofcontents}) enthalten,
+ausgenommen Artikel-artige Berichte. In diesem Fall folgt es auf die
+Kurzfassung oder das Vorwort. Diese werden deshalb nicht im Inhaltsverzeichnis
+aufgeführt.
+
+Dem Inhaltsverzeichnis können wahlweise ein Abbildungsverzeichnis
+(\cs{listoffigures}) oder Tabellenverzeichnis (\cs{listoftables})
+folgen. Einige Pakete stellen eigene Verzeichnisse bereit, die an dieser Stelle
+stehen können, so zum Beispiel das \File{listings}"=Paket mit
+\cs{listoflistings}. All diese Verzeichnisse sollten selbst \emph{nicht} im
+Inhaltsverzeichnis aufgeführt werden.
+
+Die einzelnen Beiträge von tagungsbandartigen Berichten sollten selbst kein
+eigenes Inhaltsverzeichnis haben.
+
+\begin{Describe}
+  \DescribeOption{intoc}{\meta{element}}\\
+  \DescribeValue{intoc}{title}\\
+  \DescribeValue{intoc}{notitle}\\
+  \DescribeValue{intoc}{author}\\
+  \DescribeValue{intoc}{noauthor}\\
+  \DescribeValue{intoc}{affiliation}\\
+  \DescribeValue{intoc}{noaffiliation}\\
+  \DescribeValue{intoc}{principalInvestigator}\\
+  \DescribeValue{intoc}{noprincipalInvestigator}\\
+  \DescribeValue{intoc}{event}\\
+  \DescribeValue{intoc}{noevent}\\
+  {\color{gray}\DescribeValue{intoc}{all}}
+\end{Describe}
+\subsubsection*{Inhaltsverzeichniselemente für sammlungsartige Berichte}
+
+Sammlungsbandartige Berichte können in verschiedenen Arten
+auftreten, welche jeweils andere Anforgerungen an das
+Inhaltsverzeichnis stellen. Einfache Sammlungen benötigen
+typischerweise nur Kapiteleinträge, wogegen Tagungsbände eher
+Autorennahmen und Beitragstitel verwenden.
+
+Die Option \Option{intoc} ermöglicht es, das Aussehen des
+Inhaltsverzeichnis dahingehend anzupassen. Sie kann mehrfach
+angegeben werden um einzelen Inhaltsverzeichniselemente an- oder
+abzuschalten. Das betrifft somit alle Metadaten die in
+\autoref{sec:metadata} angegeben sind.
+
+Standardmäßig sind nur |title| und |author| aktiv. Würde |all|
+gewählt, sähe das Inhaltsverzeichnis wie folgt aus:
+\par\medskip\noindent\fbox{\begin{minipage}{\linewidth}
+    \smaller
+    \parindent=0pt
+    \leftskip=1.5em
+    \rightskip=\leftskip
+    \vspace*{\baselineskip}
+    {\Large\bfseries\contentsname}\par
+    \vspace*{\baselineskip}
+    \leavevmode{\bfseries 1. Chair's Welcome}\hfill\hbox to 1.5em{\hfil 1}\par
+    \vspace*{\baselineskip}
+    {\bfseries Conference on Things'99}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{\bfseries Prof. Dr. Richard Withaname, Hasso Plattner Institute}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{The importance of why and how to do work}\TOCLineLeaderFill\relax\hbox to 1.5em{\hfil 2}\par
+    \leavevmode\hspace*{30pt}{\itshape Anna Author, and Bert Betatester, and Clara Creative}\par
+    \leavevmode\hspace*{30pt}{\itshape Thought Envisioning Group, Hasso Plattner Institute}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{Towards Thinking of Thinking as Thinking}\TOCLineLeaderFill\relax\hbox to 1.5em{\hfil 25}\par
+    \leavevmode\hspace*{30pt}{\itshape Dora Dedicated, and Ernest Erstwhile, and Fred Flint}\par
+    \leavevmode\hspace*{30pt}{\itshape Thinking of Thinking Group, Hasso Plattner Institute}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{\bfseries Prof. Dr. Emily Alwaysnamed, MIT}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{Work as Thinking}\TOCLineLeaderFill\relax\hbox to 1.5em{\hfil 48}\par
+    \leavevmode\hspace*{30pt}{\itshape Gunther Guinea}\par
+    \leavevmode\hspace*{30pt}{\itshape Work Group, MIT}\par
+    \vspace*{\baselineskip}
+    \leavevmode\hspace*{15pt}{Thinking as Work}\TOCLineLeaderFill\relax\hbox to 1.5em{\hfil 72}\par
+    \leavevmode\hspace*{30pt}{\itshape Hera Hopeful and Ida Idaho}\par
+    \leavevmode\hspace*{30pt}{\itshape Think Group, MIT}\par
+    \vspace*{2\baselineskip}
+\end{minipage}}
+
+\section{Satzeigenschaften}
+Technische Berichte des \textsc{hpi} werden sowohl gedruckt als auch
+elektronisch verlegt. Um ein einheitliches Erscheinungsbild über alle Medien
+und Berichtarten hinweg zu gewährleisten, müssen alle Berichte den gleichen
+Satzeigenschaften genügen.
+
+\subsection{Seite und Satzspiegel}
+\begin{itemize}
+\item Der Satz erfolgt ausschließlich einspaltig.
+\item Die Papiergröße ist \SI{210}{\mm}\(\times\)\SI{297}{\mm}
+(\textsc{iso}\,216 A4 alias \textsc{din}\,A4) mit einem Seitenverhältnis von \(\sqrt{2}\).
+\item Die Zeilenlänge sollte 85 Zeichen nicht überschreiten.
+\item Der Satzspiegel steht im goldenen Schnitt \emph{ϕ}.
+\item Die Stege (Ränder) sollten folgenden Gleichungen genügen:{\let\V\mathrm
+  \[ \V{oben} < \V{links} \leq \V{rechts} < \V{unten} \text{ und } \V{oben} : \V{unten} = 1 : 2 \]
+  }
+\end{itemize}
+
+Um diesen Satzspiegel zu gewährleisten, wählt die Klasse (ungefähr) die
+Seitenstege mit {99}\,\si{\pt} oder 8\cfrac{1}{4}\,\si{\pc},
+den Kopfsteg mit {66}\,\si{\pt} oder 5\cfrac{1}{2}\,\si{\pc}
+und den Fußsteg mit {135}\,\si{\pt} oder
+11\cfrac{1}{4}\,\si{\pc}\footnote{circa \SI{34.9}{\mm},
+  \SI{23.3}{\mm}, beziehungsweise \SI{47.6}{\mm}}.
+
+Die Paginierung (Seitenzahlen) erfolgt zentriert im Seitenfuß.
+
+\remark{Seitengröße, Stege (Ränder) und Satzspiegel dürfen nicht verändert
+werden.}
+
+\subsection{Titelei, Dokumentteile und Seitennummerierung}
+Wie schon beschrieben, haben \File{hpitr}"=Berichte keinen eigentlichen Titel;
+dieser wird durch den Verlag erstellt. Die erste Seite hat daher die
+Seitenzahl~5.
+
+Die Seitennummerierung erfolgt in arabischen Zahlen.
+
+\begin{Describe}
+  \DescribeMacro{frontmatter}\\
+  \DescribeMacro{mainmatter}\\
+  \DescribeMacro{backmatter}
+\end{Describe}
+Nur in sammlungsartigen Berichten ist eine Unterscheidung Zwischen Vorder"~,
+Haupt"~ und Hinterteil möglich. Im Vorderteil sollte die Seitennummerierung in
+römischen Zahlen (Kleinbuchstaben) erfolgen, sonst mit arabischen. Die erste
+Seite hat die Seitenzahl „v“.
+
+\begin{figure*}[tbp]
+  \centering
+  \setlength{\unitlength}{.9pt}
+  \hbox to \linewidth{\hss%
+  \vbox{\hbox to 1.1\linewidth{
+      \begin{picture}(120,140)
+        \makebox(120,140){
+        \shortstack{
+        \framebox(75,96){{\fontsize{72}{86}\selectfont❦}}\\
+        \makebox(96,15)[b]{%
+          \color{MidnightBlue}\linethickness{7pt}\line(1,0){96}%
+        }}}
+      \end{picture}
+      \hss
+      \begin{picture}(120,140)
+        \makebox(120,140){
+          \shortstack{
+            \makebox(120,96)[lb]{
+              \put(10,10){\vector(1,0){100}}
+              \put(15,5){\vector(0,1){75}}
+              \put(13,50){\line(1,0){6}}
+              \put(10,50){\makebox(0,0){\small $1$}}
+              \linethickness{12pt}
+              \put(30,10){\line(0,1){50}}
+              \put(50,10){\line(0,1){22}}
+              \put(70,10){\line(0,1){35}}
+              \put(90,10){\line(0,1){28}}
+            }\\
+            \makebox(96,15)[b]{%
+              \color{MidnightBlue}\linethickness{7pt}\line(1,0){96}%
+            }}}
+      \end{picture}
+      \hss
+      \begin{picture}(120,140)
+        \makebox(120,140){
+          \shortstack{
+            \makebox(96,15)[t]{%
+              \color{MidnightBlue}\linethickness{7pt}\line(1,0){96}%
+            }\\
+            \makebox(110,96)[lt]{
+              {\thicklines \put(0,96){\line(1,0){110}}}
+              {\thicklines \put(0,0){\line(1,0){110}}}
+              \let\mysize\footnotesize
+              \put(0,86){\mysize aaaa}
+              \put(36,86){\mysize zzzzzzzzzzzzz}
+              \put(0,84){\line(1,0){110}}
+              \put(0,74){\mysize bbbb}
+              \put(36,74){\mysize yyyyyyyyyy}
+              \put(0,62){\mysize cccc}
+              \put(36,62){\mysize xxxxxxxxxx}
+              \put(36,50){\mysize wwwww}
+              \put(0,38){\mysize ddd}
+              \put(36,38){\mysize vvvvv}
+              \put(36,26){\mysize uuu}
+              \put(36,14){\mysize ttttttttttttt}
+              \put(0,2){\mysize fff}
+              \put(36,2){\mysize sssssssssssssss}
+            }}}
+      \end{picture}
+      \hss
+      \begin{picture}(100,140)
+        \makebox(100,140){
+          \shortstack{
+            \makebox(96,15)[t]{%
+              \color{MidnightBlue}\linethickness{7pt}\line(1,0){96}%
+            }\\
+            \makebox(90,100)[lb]{
+              \let\mysize\tiny
+              \def\lt{\linethickness{5pt}}
+              \put(5,96){\linethickness{3pt}\line(1,0){30}}
+              \put(0,84){\mysize 1}{
+                \put(5,86){\lt\line(1,0){10}}\put(20,86){\lt\line(1,0){25}}
+              }
+              \put(0,72){\mysize 2}{
+                \put(15,74){\lt \line(1,0){15}} \put(35,74){\lt \line(1,0){30}}
+                \put(70,74){\lt \line(1,0){20}}
+              }
+              \put(0,60){\mysize 3}{
+                \put(15,60){\lt \line(1,0){10}} \put(30,60){\lt \line(1,0){10}}
+                \put(45,60){\lt \line(1,0){30}}
+              }
+              \put(0,48){\mysize 4}{
+                \put(30,50){\lt \line(1,0){30}}}
+              \put(0,36){\mysize 5}{
+                \put(15,36){\lt \line(1,0){15}}
+              }
+              \put(0,24){\mysize 6}{
+                \put(30,26){\lt \line(1,0){45}}}
+              \put(0,12){\mysize 7}{
+                \put(15,14){\lt \line (1,0){25}}}
+              \put(0, 0){\mysize 8}{
+                \put(5,2){\lt \line(1,0){18}}}
+            }}}
+      \end{picture}
+    }}\hss}
+  \caption{%
+Empfohlene Positionen für Fließumgebungsbeschriftungen.%
+}
+  \label{fig:floats}
+\end{figure*}
+\subsection{Fließumgebungen}
+
+Aller nicht-textueller Inhalt, der Platz benötigt und auf den im Dokument
+verwiesen wird, wird als "`fließender Inhalt"' behandelt. Dazu zählen \zB
+Abbildungen, Tabellen (auch Tafeln) oder Quelltextwiedergaben.
+
+Fließumgebungen können an der Stelle platziert werden, an der sie im Quelltext
+auftreten, können von \LaTeX\ aber auch an den Seitenanfang oder
+"~ende oder eine eigene Seite verschoben werden. Dies ist beabsichtigt.\\
+\emph{Bemerkung:} Fließumgebungen, die zwingend \emph{exakt} an der Stelle
+erscheinen müssen an der sie im Quelltext gegeben sind, sind im eigentlichen
+Sinne keine Fließumgebungen und benötigen daher auch keine
+Beschriftung.\footnote{Daher ist der \lstinline|H|"=Schalter des
+  \File{float}"=Paketes auch nicht verfügbar.}
+
+Jede Fließumgebung sollte an ihrem Anfang oder Ende beschriftet sein.
+Abbildungen -- typischerweise Grafiken, Graphen oder Diagramme -- werden als
+Ganzes wahrgenommen oder von unten-links gelesen. Sie sollten daher
+Bild\emph{unter}schriften erhalten. Tabellen, Quelltextwiedergaben, Algorithmen
+oder Ähnliches werden von oben nach unten gelesen und können über mehrere
+Seiten gehen. Sie sollten daher \emph{Über}schriften erhalten (siehe \autoref{fig:floats}).
+
+Fließumgebungen werden mit ihrem Typ benannt und innerhalb eines Kapitels (bei
+eigentlichen und sammlungsartigen Berichten) oder eines Abschnitts (bei
+Artikel-artigen Berichten oder Beiträgen zu einem tagungsbandartigen Bericht)
+nummeriert.
+
+\section{Detailtypographie}
+
+Für eine konsistente Darstellung, müssen die Wahl von Schrift und Abständen
+stabil bleiben. Die \File{hpitr}"=Klasse wählt daher folgende Schriften und
+Abstände.
+
+\subsection{Schriften}
+
+Die Hauptschriftart (Brotschrift) für \File{hpitr}"=Berichte ist die%
+\begin{quotation}{\fontspec{TeX Gyre Pagella}%
+\upshape
+  \TeX\ Gyre Pagella%
+}\end{quotation}%
+der GUST e-foundry, eine Digitalisierung Hermann Zapfs ``{\fontspec{Palatino
+    Linotype} Palatino}''. Sie wird mit \SI{12}{\pt} auf einem Zeilenabstand
+von \SI{15.12}{\pt} gesetzt. Quelltext"=artige Textteile können in der
+dicktengleichen ("`mono-spaced"')%
+\begin{quotation}{\fontspec{Source Code Pro}[Scale=MatchLowercase]%
+\upshape
+    Source Code Pro%
+ }\end{quotation}%
+von Adobe gesetzt werden. Sie wird automatisch auf die richtige Größe skaliert.
+Für spezielle Hervorhebungen kann die serifenlose ("`sans-serif"')
+\begin{quotation}{\fontspec{Source Sans Pro}[Scale=MatchLowercase]%
+\upshape
+    Source Sans Pro%
+  }\end{quotation}%
+von Adobe in gleicher Weise benutzt werden.
+
+Hervorhebungen sollten generell durch \emph{Kursive} oder \emph{Kapitälchen}
+erfolgen; auf serifenlose oder fette Schriften sollte nur sparsam
+zurückgegriffen werden.
+
+\subsection{Abstände}
+
+Alle Abstände sind voreingestellt und werden hier nur zur Referenz
+wiedergegeben.
+
+\begin{itemize}
+\item Absätze werden ohne vertikalen Abstand gesetzt und mit einem Geviert
+  (hier \SI{12}{\pt}) eingezogen, es sei denn er folgt einer Überschrift.
+\item Kapitelüberschriften werden mit drei Zeilen davor und zwei danach
+  abgetrennt.
+\item Abschnittsüberschriften werden mit zwei Zeilen davor und einer danach
+  abgetrennt.
+\item Unterabschnittsüberschriften werden mit je einer Zeile davor und danach
+  abgetrennt.
+\item Unter"=Unterabschnittsüberschriften werden mit einer Zeile davor
+  abgetrennt. Danach folg kein vertikaler Weißraum.
+\item Überschriften benannter Absätze werden mit einer Zeile davor abgetrennt.
+  Der Text fängt direkt rechts der Überschrift an.
+\item Fließumgebungen werden vom Text mit zwei Zeilen abgetrennt.
+\item Fließumgebungen werden voneinander mit einer Zeile abgetrennt.
+\end{itemize}
+
+\subsection{Beschriftungen}
+
+Der Beschriftung von Fließumgebungen wir der unverkürzte Name (\zB Abbildung
+oder Tabelle), die laufende Fließumgebungsnummer und ein Doppelpunkt
+vorangestellt, alles in fetter Schrift. Die eigentliche Beschriftung folgt, in
+normaler, nicht"=fetter Schrift.
+
+Ist die gesamte Beschriftung nicht länger als eine Zeile, wird diese zentriert
+gesetzt. Mehrzeilige Beschriftungen werden linksbündig gesetzt und bis auf die
+erste Zeile mit einem Geviert (hier \SI{12}{\pt}) eingezogen.
+
+ \subsection*{Anderes}
+
+\begin{Describe}
+  \DescribeMacro{hairspace}\\
+  \DescribeMacro{eg}, %
+  \DescribeMacro{Eg}\\
+  \DescribeMacro{ie}, %
+  \DescribeMacro{Ie}\\
+  \DescribeMacro{zB}, %
+  \DescribeMacro{ZB}\\
+  \DescribeMacro{dh}, %
+  \DescribeMacro{Dh}\\
+  \DescribeOption{egiecomma}
+\end{Describe}
+
+\begingroup
+\def\hairspace{\ifmmode\mskip1mu\else\kern0.08em\fi}
+
+Im Englischen wie im Deutschen folgt in Abkürzungen auf einen Punkt eine
+\emph{halbes} (oder kleineres) Leerzeichen. Daher sollte folgendes vermieden
+\begin{quotation}
+  z.B.\hspace{1em}e.~g.\hspace{1em}i.\hspace{1em}e.
+\end{quotation}
+und eher so gesetzt werden.
+\begin{quotation}
+  z.\hairspace{}B.\hspace{1em}e.\hairspace{}g.\hspace{1em}i.\hairspace{}e.
+\end{quotation}
+
+Der Einfachheit halber sind daher die Befehle für i.\hairspace{}e.,
+e.\hairspace{}g., d.\hairspace{}h. und z.\hairspace{}B. sowohl mit initialen
+Groß"~ als auch Kleinbuchstaben vorhanden (\cs{dh}, \cs{Dh}, \cs{zB}, \cs{ZB},
+\textit{\&c}.). Der \cs{hairspace}"=Befehl kann für ähnliche Befehle genutzt
+werden.
+
+Die Praxis bezüglich einem Komma nach i.\hairspace{}e. und e.\hairspace{}g. ist
+uneinheitlich. Die Klassenoption |egiecomma=true| kann daher benutzt werden, um
+den entsprechenden Befehlen automatisch ein Komma anzufügen.\bigskip
+
+Der Befehl \cs{sloppy} sollte vermieden werden. Problematische
+Stellen können mit der |sloppypar|"=Umgebung besser behandelt werden.
+
+\remark{Der \cs{sloppy}"=Befehl sollte nicht benutzt werden.}
+
+\endgroup
+
+
+\section{Verweise}
+Die \File{hpitr}"=Klasse unterstützt einen bestimmten Stil auf andere Quellen
+oder innerhalb eines Dokuments zu verweisen.
+
+\DescribeMacro{autoref}
+\subsection{Interne Verweise}
+
+Um Verweise zwischen Dokumentteilen zu erleichtern kann der
+\cs{autoref}"=Befehl genutzt werden, der folgende Verweisbeschriftungen
+erzeugt:
+
+\subsubsection{Berichte mit Kapiteln}
+
+Für Berichte mit Kapiteln (ausgenommen tagungsbandartige Berichte) wird
+folgendes Namensschema verwendet:
+
+\begin{itemize}
+\item Für Kapitel: „Kapitel \(n\)“
+\item Für Abschnitte: „Abschnitt \(n.m\)“, wobei \(n\) die Kapitelnummer ist.
+\item Für Unterabschnitte: „Abschnitt \(n.m.k\)“, wobei \(m\) die
+  Abschnittsnummer und \(n\) die Kapitelnummer ist. Das Wort Unterabschnitt
+  wird nicht verwendet.
+\item Für Unterunterabschnitte: „Abschnitt \(n.m.k.l\)“, wobei \(k\) die
+  Unterabschnittsnummer, \(m\) die Abschnittsnummer und \(n\) die Kapitelnummer
+  ist. Das Wort Unterunterabschnitt wird nicht verwendet.
+\item Benannte Absätze: Verweise auf benannte Absätze sollten vermieden werden.
+\end{itemize}
+\subsubsection{Berichte ohne Kapitel}
+
+Für Berichte ohne Kapitel und Beiträge zu tagungsbandartigen Berichten  wird
+folgendes Namensschema verwendet:
+
+\begin{itemize}
+\item Für Abschnitte: „Abschnitt \(n\)“
+\item Für Unterabschnitte: „Abschnitt \(n.m\)“, wobei \(n\) die
+  Abschnittsnummer ist. Das Wort Unterabschnitt wird nicht verwendet.
+\item Für Unterunterabschnitte: „Abschnitt \(n.m.k\)“, wobei \(m\) die
+  Unterabschnittsnummer und \(n\) die Abschnittsnummer ist. Das Wort
+  Unterunterabschnitt wird nicht verwendet.
+\item Benannte Absätze: Verweise auf benannte Absätze sollten vermieden werden.
+\end{itemize}
+\bigskip
+
+Die Beiträge zu tagungsbandartigen Berichten sollten nicht gegenseitig
+aufeinander verweisen, soweit möglich.
+
+Der \cs{autoref}"=Befehl kann auch verwendet werden um auf Fließumgebungen wie
+Abbildungen zu verweisen.
+
+
+ \subsection{Zitier"~ und Literaturstil}
+\label{sec:biblio}
+
+\DescribeMacro{cite}
+In Zitaten und Literaturlisten wird ein einfacher, \emph{numerischer} Stil
+genutzt. Die Nummerierung folgt der \emph{alphabetischen} Sortierung der
+Literatureinträge in der Literaturliste am Ende des Berichts (oder am Ende
+der Einzelbeiträge in sammlungsartigen Berichten, sofern angebracht).
+Vornamen werden abgekürzt.
+
+\begingroup\normalfont
+\vspace*{\baselineskip}
+\parbox[t]{1.5em}{[1]}\parbox[t]{\dimexpr\linewidth - 2em}{%
+I.~Nassi and B.~Shneiderman.
+\newblock Flowchart techniques for structured programming.
+\newblock {\em SIGPLAN Not.}, 8(8):12--26, 1973.}
+\vspace*{\baselineskip}
+\endgroup
+
+Dies entspricht dem \emph{plain}-Stil von \BibTeX, beziehungsweise dem
+\emph{numeric-comp}-Stil mit Namensabkürzungen in Biblatex. In jedem Fall ist
+der Stil schon vorausgewählt. Im Zweifel ist die Variante nach Biblatex
+maßgeblich.
+
+\remark{Weder Zitier"~ noch Literaturstil dürfen verändert werden.}
+
+Obwohl \BibTeX\ gut funktionieren sollte und auch unterstützt wird, wird
+Biblatex, insbesondere mit dem \emph{biber}-Backend empfohlen, da dies eine
+vernünftige Verwendung von Unicodezeichen und "~schriften erlaubt.
+Sammlungsartige Berichte \emph{müssen} Biblatex benutzen. Eine Liste aller
+von \BibTeX\ und Biblatex unterstützten zu zitierenden Werkarten findet sich
+in \autoref{tbl:bibtytpes}. Nicht aufgeführte Werkarten erhalten den Typ
+\emph{misc}.
+
+\begin{table}[htbp]
+  \smaller
+  \centering
+  \begin{threeparttable}
+    \caption{%
+ Unterstützte Bibliographieeintragsarten; %
+ Standardeintragsart ist markiert; Parallelbezeichnungen kursiv.%
+    }
+    \label{tbl:bibtytpes}
+    \begin{tabular}{>{\relax}l>{\relax}l>{\relax}l}
+    \toprule
+    \BibTeX           & Biblatex                   &                      \\
+    \midrule
+    article           & article                    &
+                                                    Zeitschriften"~, Magazin"~ und andere Artikel \\
+                      & \textit{suppperiodical}      &
+                                                    Zusatzmaterialien in Periodika \\
+                      & \textit{review}              &
+                                                    Rezensionen anderer Arbeiten \\
+    book              & book                       &
+                                                    Bücher\\
+                      & \textit{mvbook}              &
+                                                    Mehrbändige --- \\
+    booklet           & booklet                    &
+                                                    Buchartiges nicht-verlegtes Werk \\
+                      & collection                 &
+                                                     Sammlung eigenständiger Werke \\
+                      & \textit{mvcollection}        &
+                                                    Mehrbändige --- \\
+                      & \textit{reference}           &
+                                                    Nachschlagewerke wie Wörterbücher\\
+                      & \textit{mvreference}         &
+                                                    Mehrbändige --- \\
+    inbook            & inbook\tnote{a}            &
+                                                    Eigenständiger Buchteil \\
+                      & \textit{bookinbook}          &
+                                                    Buchteil, der schon als eigenständiges Buch verlegt wurde \\
+                      & \textit{suppbook}            &
+                                                    Zusatzmaterialien in Büchern \\
+    incollection      & incollection               &
+                                                    Eigenständiges Werk, das einer Sammlung ist \\
+                      & \textit{suppcollection}      &
+                                                    Zusatzmaterialien in Sammlungen \\
+                      & \textit{inreference}         &
+                                                    Artikel in Nachschlagewerken\\
+    inproceedings     & inproceedings              &
+                                                    Tagungsbandartikel\\
+    \textit{conference} & \textit{conference}          &
+                                                    --- dito \\
+    manual            & manual                     &
+                                                    Handbücher \\
+    mastersthesis     & mastersthesis\tnote{b}     &
+                                                    Master"~ oder Magisterarbeiten \\
+\llap{☞} misc        & misc                        &
+                                                    sonstiges (Vorgabewert)\\
+                      & online                     &
+                                                    Internetquellen wie Webseiten \\
+                      & \textit{www}                 &
+                                                    --- dito \\
+                      & \textit{electronic}          &
+                                                    --- dito \\
+    phdthesis         & phdthesis\tnote{b}         &
+                                                    Dissertation \\
+                      & patent                     &
+                                                    Patente \\
+                      & periodical                 &
+                                                    Ganze Zeitschriftenausgabe \\
+    proceedings       & proceedings                &
+                                                    Konferenz"~ und Tagungsbände \\
+                      & \textit{mvproceedings}       &
+                                                    Mehrbändige --- \\
+                      & report                     &
+                                                    Von Institutionen veröffentlichte Berichte\\
+    techreport        & \textit{techreport}\tnote{c} &
+                                                    Technische Berichte\\
+                      & thesis                     &
+                                                    Abschlussarbeiten \\
+                      & \textit{mastersthesis}       &
+                                                    (siehe oben) \\
+                      & \textit{phdthesis}           &
+                                                    (siehe oben) \\
+    unpublished       & unpublished                &
+                                                    Nicht offiziell veröffentlichte Werke \\
+    \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+    \item [a]
+      Verhält sich anders als in \BibTeX
+    \item [b]
+      Eigentlich eine thesis-Unterart
+    \item [c]
+      Eigentlich eine report-Unterart
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+ \section{Verschiedenes}
+\begin{Describe}
+  \DescribeOption{copyrightmark}\\
+  \DescribeValue{copyrightmark}{true}\\
+  \DescribeValue{copyrightmark}{false}
+\end{Describe}
+\subsection{Coyprightvermerk in den Metadaten}
+
+Standardmäßig wird eine Vermerk der form "`Copyright (c) \the\year, HPI"' dem
+erzeugten PDF hinzugefügt, was der Option |copyrightmark| oder
+|copyrightmark=true| entspricht. Um den Vermerk zu verhindern, sollte die Option
+|copyrightmark=false| verwendet werden.
+
+\begin{Describe}
+  \DescribeOption{draft}\\
+  \DescribeValue{draft}{true}\\
+  \DescribeValue{draft}{full}\\
+  \DescribeOption{todotools}
+\end{Describe}
+\subsection{Editierhilfen}
+
+Zur Unterstützung von Vorversionen eines Berichts schaltet die Klassenoption
+|draft| (oder |draft=true|) einen grauen Balken mit der Aufschrift „Draft“ am
+Seitenanfang und "~ende ein. Viele \LaTeX"=Pakete reagieren ebenfalls auf die
+|draft|"=Option. Normalerweise schaltet dies auch alle Bilder ab. Die
+\File{hpitr}"=Klasse sorgt jedoch dafür, dass alle Bilder auch in Vorversionen
+ins Dokument übernommen werden. Sollen Bilder außen vor bleiben, kann die
+|draft=full|"=Option genutzt werden.
+
+Die Option |todotools=true| lädt das \File{todonotes}"=Paket und stellt einige
+zusätzliche Editierbefehle bereit.
+
+\subsection{\LaTeX"=Pakete}
+Die folgenden Pakte werden von der \File{hpitr}"=Klasse automatisch geladen.
+
+\begin{multicols}{2}
+{\color{DarkGreen}\smaller
+\begin{itemize}
+\item \File{accsupp}
+\item \File{amsmath}
+\item \File{amssymb}
+\item \File{babel}
+\item \File{biblatex} \emph{collections\,/\,proceedings only}
+\item \File{blindtext} \emph{draft only}
+\item \File{booktabs}
+\item \File{color}
+\item \File{csquotes}
+\item \File{eso-pic} \emph{draft only}
+\item \File{etoolbox}
+\item \File{expl3}
+\item \File{extdash}
+\item \File{fixltx2e} pre-\TeX Live 2015 \emph{only}
+\item \File{fontenc} \pdfTeX\ \emph{only}
+\item \File{fontspec} \LuaTeX/\XeTeX\ \emph{only}
+\item \File{graphicx}
+\item \File{grffile}
+\item \File{hypcap}
+\item \File{hyperref}
+\item \File{hyperxmp}
+\item \File{hyphsubst} \pdfTeX\ \emph{only}
+\item \File{ifdraft}
+\item \File{ifluatex}
+\item \File{ifthen}
+\item \File{ifxetex}
+\item \File{inputenc}
+\item \File{longtable}
+\item \File{ltxcmds}
+\item \File{luatex85} since \TeX Live 2016, \LuaTeX\ \emph{only}
+\item \File{mathcomp}
+\item \File{mathpazo} \pdfTeX\ \emph{only}
+\item \File{microtype}
+\item \File{pdfpages} \emph{proceedings only}
+\item \File{ragged2e} \emph{collections\,/\,proceedings only}
+\item \File{relsize}
+\item \File{scrbase}
+\item \File{scrhack}
+\item \File{scrlayer-scrpage}
+\item \File{siunitx}
+\item \File{sourcecodepro}
+\item \File{sourcesanspro}
+\item \File{tabularx}
+\item \File{textcomp}
+\item \File{tocbasic}
+\item \File{todonotes} \emph{draft only}
+\item \File{xcolor}
+\item \File{xpatch}
+\item \File{xparse}
+\item \File{xspace}
+\end{itemize}}
+\end{multicols}
+
+\par\noindent Die folgenden Pakte \emph{dürfen nicht} geladen werden.
+
+\begin{multicols}{2}
+{\color{DarkRed}\smaller
+\begin{itemize}
+\item \File{SIstyle}
+\item \File{SIunits}
+\item \File{a4wide}
+\item \File{a4}
+\item \File{aecompl}
+\item \File{ae}
+\item \File{caption2}
+\item \File{cite} \emph{in collections}
+\item \File{courier}
+\item \File{doublespace}
+\item \File{epsfig}
+\item \File{epsf}
+\item \File{euler}
+\item \File{eulervm}
+\item \File{fancyhdr}
+\item \File{fancyheadings}
+\item \File{fourier}
+\item \File{geometry}
+\item \File{glossary}
+\item \File{helvet}
+\item \File{isolatin}
+\item \File{mathpple}
+\item \File{mathptmx}
+\item \File{mathptm}
+\item \File{newtxmath}
+\item \File{newtxtext}
+\item \File{palatino}
+\item \File{psfig}
+\item \File{pslatex}
+\item \File{scrpage}
+\item \File{subfigure}
+\item \File{subfig}
+\item \File{t1enc}
+\item \File{times}
+\item \File{umlaut}
+\item \File{utopia}
+\item \File{zefonts}
+\end{itemize}}
+\end{multicols}
+
+ \section{Fehlerbehebung}
+
+\subsection{Biber}
+ Biber beklagt sich zeitweise über "`fehlende Dateien"', \zB
+\par\smallskip
+{\centering\ttfamily\bfseries
+read\_file '\meta{\textit{a path}}/recode\_data.xml' -
+sysopen: No such file or directory at \meta{\textit{another path}}/bda77484.pm
+line 112.
+\par}
+\medskip
+  \noindent Der Grund liegt in einem kaputten oder unvollständigem
+  Cache"=Verzeichnis. Das ist zwar unerfreulich aber nicht problematisch. Wird
+  das Cache"=Verzeichnis (mit \lstinline|biber -cache| herauszufinden)
+  gelöscht, wird Biber es beim nächsten Lauf wieder korrekt angelegen und der
+  Fehler ist behoben.
+
+\PrintIndex
+\end{document}
+\endinput
+%%
+%% End of file `hpitr-de.ltx'.

@@ -1,0 +1,450 @@
+\documentclass[%
+  english,%
+  todotools=true,%
+  trtype=proceedings%
+]{hpitr}
+\usepackage[backend=biber]{biblatex}
+\usepackage[math]{blindtext}
+\usepackage{threeparttable}
+\usepackage{listings}
+\usepackage{algpseudocode}
+\DeclareNewTOC[name=Algorithm,
+  type=algorithm,
+  atbegin=\KOMAoptions{captions=above},
+  float]{alg}
+
+\rowcolors*{2}{lightgray!25}{}
+
+\begin{filecontents}{example.bib}
+@article{953350,
+  Address = {New York, NY, USA},
+  Author = {Nassi, I. and Shneiderman, B.},
+  Doi = {10.1145/953349.953350},
+  Issn = {0362-1340},
+  Journal = {SIGPLAN Not.},
+  Number = {8},
+  Pages = {12--26},
+  Publisher = {ACM},
+  Title = {Flowchart techniques for structured programming},
+  Volume = {8},
+  Year = {1973}}
+\end{filecontents}
+\addbibresource{example.bib}
+
+\begin{document}
+\title{Proceedings of the First Workshop on Meaning}
+\author{Emilia Editor\and Peter Publisher}
+\event{Meaning'99}
+\maketitle
+\frontmatter
+\chapter*{Preface}
+\blindtext[2]
+\tableofcontents
+\lstlistoflistings
+\mainmatter
+
+\title{The importance of why and how to do work}
+\subtitle{An imaginary paper to showcase a document}
+\author{Anna Author\affil{1}\and Bert Betatester\affil{2}\and Clara Creative\affil{2}}
+\affiliation{
+  \group{Thought Envisioning Group}\\
+  \organization{Hasso Plattner Institute for Digital Engineering}\\
+  \email{{firstname.lastname}@hpi.de}
+  \and
+  \group{Thought Envisioning Group}\\
+  \organization{Hasso Plattner Institute for Digital Engineering}\\
+  \email{{firstname.lastname}@hpi.de}
+}
+\keywords{paper, showcase, lorem ipsum}
+\maketitle
+
+\begin{abstract}
+  Hello, here is some text without a meaning. This text should show
+  what a printed text will look like at this place. If you read this
+  text, you will get no information. Really? Is there no
+  information? Is there a difference between this text and some
+  nonsense like “Huardest gefburn”? Kjift – not at all! A blind text
+  like this gives you information about the selected font, how the
+  letters are written and an impression of the look. This text
+  should contain all letters of the alphabet and it should be
+  written in of the original language. There is no need for special
+  content, but the length of words should match the language.
+\end{abstract}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.\todo{cite}
+
+\subsection{Contributions}
+\label{sec:contributions}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Context}
+\label{sec:context}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\todosec{Is that redundant?}
+
+\subsection{Background}
+\label{sec:background}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Problem}
+\label{sec:problem}
+
+\secmissing{The Main Problem}
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.~\cite{953350}
+
+\subsection{Specific Problem}
+\label{sec:specific-problem}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Solution}
+\label{sec:solution}
+
+\todolist{anton}{
+\item Put A onto B
+\item Put B into C
+\item Pull D from C
+}%
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\subsection{Specific Solution}
+\label{sec:specific-solution}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\begin{table}
+  \centering
+  \caption{Different Animals, different values}
+  \label{tab:different}
+  \begin{tabular}{@{}llSs@{}}
+    \hiderowcolors
+    \toprule
+    \multicolumn{2}{c}{Item}\\ \cmidrule(r){1-2}
+    Animal    & Description & {Value}   & Unit\\
+    \midrule
+    Gnat      & per gram &    2.3456 & \dB                       \\
+              & each     &    1.2e-3 & \metre\squared\per\second \\
+    Gnu       & stuffed  &       e3  & \kilo\hertz               \\
+    Emu       & stuffed  &   90.473  & \percent                  \\
+    Armadillo & frozen   & 5642.5    & \mega\byte                \\
+    \bottomrule
+    \showrowcolors
+  \end{tabular}
+\end{table}
+
+\section{Implementation}
+\label{sec:implementation}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\begin{figure}
+  \centering
+  \setlength{\unitlength}{.01in}
+  \begin{picture}(200,75)
+    \put(0,25){\vector(1,0){200}}
+    \put(25,0){\vector(0,1){75}}
+    \put(75,22){\line(0,1){6}}
+    \put(125,22){\line(0,1){6}}
+    \put(22,50){\line(1,0){6}}
+    \thicklines
+    \put(25,25){\line(1,0){50}}
+    \put(75,50){\line(1,0){50}}
+    \put(125,25){\line(1,0){72}}
+    \put(17,50){\makebox(0,0){$1$}}
+    \put(75,13){\makebox(0,0)[b]{$\pi$}}
+    \put(125,13){\makebox(0,0)[b]{$2\pi$}}
+    \put(195,13){\makebox(0,0)[b]{$t$}}
+    \put(175,60){\makebox(0,0){$g(t)$}}
+  \end{picture}
+  \caption{A test figure}
+  \label{fig:test}
+\end{figure}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\missingfigure{Make a overview sketch of the whole system}
+
+\subsection{Minor Detail}
+\label{sec:detail}
+
+\begin{algorithm}
+\caption{The Bellman-Kalaba algorithm}
+\begin{algorithmic}[1]
+\Procedure {BellmanKalaba}{$G$, $u$, $l$, $p$}
+\ForAll {$v \in V(G)$}
+\State $l(v) \leftarrow \infty$
+\EndFor
+\State $l(u) \leftarrow 0$
+\Repeat
+\For {$i \leftarrow 1, n$}
+\State $min \leftarrow l(v_i)$
+\For {$j \leftarrow 1, n$}
+\If {$min > e(v_i, v_j) + l(v_j)$}
+\State $min \leftarrow e(v_i, v_j)$\State $p(i) \leftarrow v_j$
+\EndIf
+$+l(v_j)$
+\EndFor
+\State $l’(i) \leftarrow min$
+\EndFor
+\State $changed \leftarrow l \not= l’$
+\State $l \leftarrow l’$
+\Until{$\neg changed$}
+\EndProcedure
+\Statex
+\Procedure {FindPathBK}{$v$, $u$, $p$}
+\If {$v = u$}
+\State \textbf{Write} $v$
+\Else
+\State $w \leftarrow v$
+\While {$w \not= u$}
+\State \textbf{Write} $w$
+\State $w \leftarrow p(w)$
+\EndWhile
+\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\lstset{language=Java}
+\begin{lstlisting}[label=lst:example,caption={An example code snippet},float,numbers=left]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); // Display the string.
+    }
+}
+\end{lstlisting}
+
+We have nice things: some code in \autoref{lst:example} and some
+information in \autoref{tbl:things}.
+
+\[\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}\]
+\[\nabla \cdot \mathbf{B} = 0\]
+\[\nabla \times \mathbf{E} = -\frac {\partial \mathbf{B}}{\partial t}\]
+\[\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0\varepsilon_0  \frac{\partial \mathbf{E}}{\partial t}\]
+
+\subsection{Threats to Valitidy}
+\label{sec:threats-valitidy}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Related Work}
+\label{sec:related-work}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\begin{table}
+  \centering
+  \begin{threeparttable}
+    \caption{Differences between things projected and things achieved}
+    \label{tbl:things}
+    \begin{tabular}{>{}p{.4\linewidth}@{}c}
+      \toprule
+      Part           & done \\
+      \midrule
+      Title          & yes  \\
+      Abstract       & no   \\
+      Intro          & yes  \\
+      \midrule
+      \multicolumn{2}{c}{Rest is not entirely true} \\
+      \midrule
+      Context        & yes  \\
+      Problem        & no\tnote{a} \\
+      Solution       & yes  \\
+      Implementation & yes  \\
+      Evaluation     & no   \\
+      Related Work   & no   \\
+      Conclusion     & yes  \\
+      \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+    \item [a] Just a few things missing
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+We have nice things: some code in \autoref{lst:example} and some
+information in \autoref{tbl:things}.
+
+Hello, here is some text without a meaning. This text should show
+what a printed text will look like at this place. If you read this
+text, you will get no information. Really? Is there no information?
+Is there a difference between this text and some nonsense like
+“Huardest gefburn”? Kjift – not at all! A blind text like this gives
+you information about the selected font, how the letters are written
+and an impression of the look. This text should contain all letters
+of the alphabet and it should be written in of the original
+language. There is no need for special content, but the length of
+words should match the language.
+
+\printbibliography
+\backmatter
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% End:
